@@ -197,3 +197,28 @@ SELECT * FROM fab_four_master_table LIMIT 5;
 -- Verify table structure
 DESCRIBE FORMATTED fab_four_master_table;
 ```
+## Analysis: Yearly Grid Count and Species Diversity
+SELECT 
+    YEAR(observed_on) AS observation_year, 
+    ROUND(latitude / 1.0) * 1.0 AS latitude_bin, 
+    ROUND(longitude / 1.0) * 1.0 AS longitude_bin, 
+    COUNT(*) AS total_observations, 
+    COUNT(DISTINCT scientific_name) AS species_count 
+FROM nshah37.fab_four_master_table 
+GROUP BY 
+    YEAR(observed_on), 
+    ROUND(latitude / 1.0) * 1.0, 
+    ROUND(longitude / 1.0) * 1.0 
+ORDER BY observation_year, total_observations DESC;
+## Materialize Results to HDFS
+SQL
+INSERT OVERWRITE DIRECTORY '/user/nshah37/hotspot_results' 
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
+SELECT ... (Analysis Query from Step 3);
+Local Extraction
+Bash
+# Get file from HDFS to Linux
+hdfs dfs -get /user/nshah37/hotspot_results/000000_0 /home/nshah37/hotspot_out.csv
+
+# SCP from Linux to Local Laptop (Run in a new terminal on your PC)
+scp nshah37@ipaddress:/home/nshah37/hotspot_out.csv C:\Users\Niyati\Desktop\
