@@ -35,7 +35,9 @@ GROUP BY scientific_name
 ORDER BY observation_count DESC
 LIMIT 10;
 ```
-Output 
+Output: 
+
+![Top species by observation count](images/ObservationCount.png)
 
 
 ---
