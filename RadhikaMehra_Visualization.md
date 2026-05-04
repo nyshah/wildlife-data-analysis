@@ -138,7 +138,7 @@ SELECT *
 FROM odocoileus_density_grid
 LIMIT 10;
 ```
-![Top species by observation count](images/base 2.png)
+![Top species by observation count](images/basetwo.png)
 
 ---
 
