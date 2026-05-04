@@ -171,12 +171,32 @@ SELECT
 	avg_temperature
 FROM odocoileus_density_grid_named;
 ```
-### Step 1.5 : copy the query files to into my linux home directory, rmehra : 
+### Step 2 : copy the query files to into my linux home directory, rmehra : 
 
 ```
 hdfs dfs -get /user/rmehra/odocoileus_density_map~/odocoileus_density_map
 ```
+---
 
+### Step 3 : To combine all of the views using cat statement into one csv
+
+```
+cat ~/odocoileus_density_map/* > ~/odocoileus_density_map.csv
+```
+---
+
+### Step 4: To confirm that odocoileus_density_map in rmehra
+
+```
+ls -lh ~/odocoileus_density_map.csv
+```
+---
+
+### Step 5 : Downloaded the csv to my mac computer :
+
+```
+scp rmehra@132.226.148.236:/home/rmehra/odocoileus_density_map.csv .
+```
 
 
 
