@@ -35,7 +35,6 @@ GROUP BY scientific_name
 ORDER BY observation_count DESC
 LIMIT 10;
 ```
-Output: 
 
 ![Top species by observation count](images/ObservationCount.png)
 
@@ -60,6 +59,24 @@ LIMIT 20;
 ### 0.4 Species Selection
 
 Species appearing in both the high observation-count and high temporal-coverage rankings were considered suitable for analysis. Mule deer (Odocoileus hemionus) satisfies both criteria and was selected for downstream processing.
+
+### 0.5 : Year Selection 
+
+```sql
+SELECT
+  YEAR(o.observed_on) AS year,
+  COUNT(*) AS total_observations,
+  COUNT(m.temperature_2m) AS temp_available
+FROM observations_raw o
+LEFT JOIN metadata_raw m
+  ON o.id = m.id
+WHERE o.scientific_name = 'Odocoileus hemionus'
+  AND o.scientific_name RLIKE '[A-Za-z]'
+GROUP BY YEAR(o.observed_on)
+ORDER BY year;
+```
+
+![Top species by observation count](images/AvgTempYears.png)
 
 ---
 
@@ -91,6 +108,7 @@ SELECT *
 FROM odocoileus_base
 LIMIT 10;
 ```
+![Top species by observation count](images/base1final.png)
 ---
 
 ### Step 1.2 : Aggregate Observations into Spatial Density Grids
@@ -120,6 +138,7 @@ SELECT *
 FROM odocoileus_density_grid
 LIMIT 10;
 ```
+![Top species by observation count](images/base 2.png)
 ---
 
 ### Step 1.3 : Add Readable Month Labels
@@ -159,6 +178,7 @@ SELECT *
 FROM odocoileus_density_grid_named
 LIMIT 10;
 ```
+![Top species by observation count](images/Basethree.png)
 ---
 
 ### Step 1.4 : Export Aggregated Dataset to HDFS
@@ -203,10 +223,13 @@ ls -lh ~/odocoileus_density_map.csv
 ```
 scp rmehra@132.226.148.236:/home/rmehra/odocoileus_density_map.csv .
 ```
+![Top species by observation count](images/csvdownload.png)
 
 ## Step 6 : Tableau Visualization in a Symbol Map
 
 - After organizing the final aggregated dataset into a single CSV file, the data was imported into Tableau using the **Text File** connection option.
+
+![Top species by observation count](images/DensityCSV.png)
 
 
 - Within Tableau, appropriate data types and geographic roles were assigned to each column to ensure correct visualization behavior:
@@ -219,6 +242,8 @@ scp rmehra@132.226.148.236:/home/rmehra/odocoileus_density_map.csv .
   - **Average_Temp** — Number (Decimal)
 ``
 
+![Top species by observation count](images/TableauColumns.png)
+
 ### Tableau Visualization Construction
 
    - **Latitude** was dragged to the **Rows** shelf
@@ -230,6 +255,15 @@ scp rmehra@132.226.148.236:/home/rmehra/odocoileus_density_map.csv .
    - The **visualization title** was customized to dynamically update based on the selected month and year, providing clear temporal context.
   - **Marks → Label** and **Marks → Detail** were used to display additional information when hovering over individual map points.
   - The visualization was converted into a **Dashboard**, with **floating legends** and layout adjustments applied to achieve a clean, professional presentation.
+
+![Top species by observation count](images/June2022.png)
+
+![Top species by observation count](images/December2021.png)
+
+![Top species by observation count](images/Augustall.png)
+
+
+
 
 
 
