@@ -1,2 +1,0 @@
-Image assets for project documentation
-
