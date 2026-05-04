@@ -19,4 +19,18 @@ All analysis was performed using tables from the shared `nshah37` database.
 ```sql
 USE nshah37;
 
+---
+
+### 0.2 Identify Species with the Highest Number of Observations
+
+This query ranks species by total observation count to ensure sufficient data density for spatial aggregation.
+
+SELECT
+    scientific_name,
+    COUNT(*) AS observation_count
+FROM observations_raw
+WHERE scientific_name RLIKE '[A-Za-z]'
+GROUP BY scientific_name
+ORDER BY observation_count DESC
+LIMIT 10;
 
