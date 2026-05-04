@@ -78,7 +78,19 @@ WHERE scientific_name = 'Odocoileus hemionus'
   AND YEAR(FROM_UNIXTIME(UNIX_TIMESTAMP(observed_on, 'yyyy-MM-dd'))) BETWEEN 2020 AND 2022;
 ```
 ---
+### Check the format of odocoileus_base
 
-### Ste
+```sql
+SELECT *
+FROM odocoileus_base
+LIMIT 10;
+```
+---
+
+### Step 1.2 : Aggregate Observations into Spatial Density Grids
+
+This step converts point-level observations into spatial grid cells to enable density-based visualization.
+
+
 
 
