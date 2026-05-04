@@ -12,16 +12,17 @@ volume and temporal coverage using pre-existing Hive tables.
 
 ---
 
-### 0.1 Set the Active Hive Database
+## 0.1 Set the Active Hive Database
 
 All analysis was performed using tables from the shared `nshah37` database.
 
 ```sql
 USE nshah37;
+``
 
 ---
 
-## 0.2 Identify Species with the Highest Number of Observations
+### 0.2 Identify Species with the Highest Number of Observations
 
 This query ranks species by total observation count to ensure sufficient data density for spatial aggregation.
 
