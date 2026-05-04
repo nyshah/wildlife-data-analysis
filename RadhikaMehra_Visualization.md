@@ -91,6 +91,71 @@ LIMIT 10;
 
 This step converts point-level observations into spatial grid cells to enable density-based visualization.
 
+```sql
+CREATE OR REPLACE VIEW odocoileus_density_grid AS
+SELECT
+	ROUND(latitude * 2) / 2  AS lat_cell,
+	ROUND(longitude * 2) / 2 AS lon_cell,
+	year,
+	month,
+	COUNT(*) AS observation_count,
+	AVG(temperature_2m) 	AS avg_temperature
+FROM odocoileus_base
+GROUP BY
+	ROUND(latitude * 2) / 2,
+	ROUND(longitude * 2) / 2,
+	year,
+	month;
+```
+### Check the format of odocoileus_density_grid
+
+```
+SELECT *
+FROM odocoileus_density_grid
+LIMIT 10;
+```
+---
+
+### Step 1.3 : Add Readable Month Labels
+
+This step improves interpretability for visualization tools by adding human-readable month names.
+
+```sql
+CREATE OR REPLACE VIEW odocoileus_density_grid_named AS
+SELECT
+	lat_cell,
+	lon_cell,
+	year,
+	month,
+	CASE month
+    	WHEN 1  THEN 'January'
+    	WHEN 2  THEN 'February'
+    	WHEN 3  THEN 'March'
+    	WHEN 4  THEN 'April'
+    	WHEN 5  THEN 'May'
+    	WHEN 6  THEN 'June'
+    	WHEN 7  THEN 'July'
+    	WHEN 8  THEN 'August'
+    	WHEN 9  THEN 'September'
+    	WHEN 10 THEN 'October'
+    	WHEN 11 THEN 'November'
+    	WHEN 12 THEN 'December'
+	END AS month_name,
+	observation_count,
+	avg_temperature
+FROM odocoileus_density_grid;
+```
+
+### Check the format of odocoileus_density_grid_named
+
+```sql
+SELECT *
+FROM odocoileus_density_grid_named
+LIMIT 10;
+```
+---
+
+
 
 
 
