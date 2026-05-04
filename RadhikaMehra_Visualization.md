@@ -54,6 +54,7 @@ GROUP BY scientific_name
 ORDER BY num_years DESC
 LIMIT 20;
 ```
+![Top species by observation count](images/NumYears.png)
 ---
 
 ### 0.4 Species Selection
