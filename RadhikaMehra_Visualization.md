@@ -47,7 +47,7 @@ FROM observations_raw
 WHERE scientific_name RLIKE '[A-Za-z]'
 GROUP BY scientific_name
 ORDER BY num_years DESC
-LIMIT 10;
+LIMIT 20;
 ```
 ---
 
