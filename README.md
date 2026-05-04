@@ -90,6 +90,14 @@ All subsequent views and exported datasets are derived directly from this master
 
 Radhika : Does average monthly temperature influence where species are observed differently across regions?
 
+![Visualization](images/June2022.png)
 
+- Niyati : Do observation hotspots persist, disappear, or shift over time?
+
+ ![Visualization]()
+  
+- Fatima : Are species observed at different times of day?
+
+![Visualization]()
 
 
