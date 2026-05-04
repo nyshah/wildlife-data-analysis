@@ -45,6 +45,17 @@ This project is based on a subset of the **iNaturalist open observations dataset
 
 ---
 
+## Research Questions
+
+- Radhika : Does average monthly temperature influence where species are observed differently across regions?
+- Roberto : Does the rarity of species observations vary systematically across space and time?
+- Niyati : Do observation hotspots persist, disappear, or shift over time?
+- Fatima : Are species observed at different times of day?
+
+## Methods and FlowChart of Analysis
+
+![Project Flowchart](images/Flow.png)
+
 ### Final Master Table (`fab_four_master_table`)
 
 The master table represents the **cleaned, integrated dataset** used for all analysis and visualization.
@@ -73,19 +84,12 @@ The master table represents the **cleaned, integrated dataset** used for all ana
   - Temperature–observation relationships
   - Time‑of‑day patterns in species observations
 
-All subsequent views and exported datasets are derived directly from this master table.
-
-## Research Questions
-
-- Radhika : Does average monthly temperature influence where species are observed differently across regions?
-- Roberto : Does the rarity of species observations vary systematically across space and time?
-- Niyati : Do observation hotspots persist, disappear, or shift over time?
-- Fatima : Are species observed at different times of day?
-
-## Methods and FlowChart of Analysis
-
-
+All subsequent views and exported datasets are derived directly from this master table
 
 ## Visualization
+
+Radhika : Does average monthly temperature influence where species are observed differently across regions?
+
+
 
 
