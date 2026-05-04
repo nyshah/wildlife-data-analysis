@@ -98,6 +98,6 @@ Radhika : Does average monthly temperature influence where species are observed 
   
 - Fatima : Are species observed at different times of day?
 
-![Visualization]()
+![Visualization](images/Fatima.png)
 
 
