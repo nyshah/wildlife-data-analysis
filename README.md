@@ -116,7 +116,7 @@ Radhika : Does average monthly temperature influence where species are observed 
 ![Visualization](images/June2022.png)
 
 - Niyati : Do observation hotspots persist, disappear, or shift over time?
-## ✅ Spatial Redistribution Symbol Map
+## ✅ Spatial distribution Symbol Map
 
  ![Visualization](images/Niyati.png)
   
