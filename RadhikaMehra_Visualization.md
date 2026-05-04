@@ -200,6 +200,21 @@ scp rmehra@132.226.148.236:/home/rmehra/odocoileus_density_map.csv .
 
 ## Step 6 : Tableau Visualization in a Symbol Map
 
+- After organizing the final aggregated dataset into a single CSV file, the data was imported into Tableau using the **Text File** connection option.
+
+
+- Within Tableau, appropriate data types and geographic roles were assigned to each column to ensure correct visualization behavior:
+  - **Longitude** — Geographic Role: Longitude
+  - **Latitude** — Geographic Role: Latitude
+  - **Year** — Whole Number
+  - **Month** — Whole Number
+  - **MonthName** — String
+  - **Observation_Count** — Whole Number
+  - **Average_Temp** — Number (Decimal)
+``
+
+### Steps within Tableau to complete visualization : 
+
 
 
 
