@@ -25,10 +25,10 @@ USE nshah37;
 This query ranks species by total observation count to ensure sufficient data density for spatial aggregation.
 
 ```sql
-SELECT
-    scientific_name,
-    COUNT(*) AS observation_count
-FROM observations_raw
+ SELECT
+  scientific_name,
+  COUNT(*) AS observation_count
+FROM fab_four_master_table
 WHERE scientific_name RLIKE '[A-Za-z]'
 GROUP BY scientific_name
 ORDER BY observation_count DESC
@@ -44,9 +44,9 @@ LIMIT 10;
 
 ```sql
 SELECT
-    scientific_name,
-    COUNT(DISTINCT YEAR(observed_on)) AS num_years
-FROM observations_raw
+  scientific_name,
+  COUNT(DISTINCT YEAR(CAST(observed_on AS DATE))) AS num_years
+FROM fab_four_master_table
 WHERE scientific_name RLIKE '[A-Za-z]'
 GROUP BY scientific_name
 ORDER BY num_years DESC
@@ -63,15 +63,13 @@ Species appearing in both the high observation-count and high temporal-coverage 
 
 ```sql
 SELECT
-  YEAR(o.observed_on) AS year,
+  YEAR(CAST(observed_on AS DATE)) AS year,
   COUNT(*) AS total_observations,
-  COUNT(m.temperature_2m) AS temp_available
-FROM observations_raw o
-LEFT JOIN metadata_raw m
-  ON o.id = m.id
-WHERE o.scientific_name = 'Odocoileus hemionus'
-  AND o.scientific_name RLIKE '[A-Za-z]'
-GROUP BY YEAR(o.observed_on)
+  COUNT(temperature_2m) AS temp_available
+FROM fab_four_master_table
+WHERE scientific_name = 'Odocoileus hemionus'
+  AND scientific_name RLIKE '[A-Za-z]'
+GROUP BY YEAR(CAST(observed_on AS DATE))
 ORDER BY year;
 ```
 
@@ -90,12 +88,12 @@ This base creates a one row record for each observation of the species of Mule d
 ```sql
 CREATE OR REPLACE VIEW odocoileus_base AS
 SELECT
-id,
-latitude,
-longitude,
-YEAR(FROM_UNIXTIME(UNIX_TIMESTAMP(observed_on, 'yyyy-MM-dd'))) AS year,
-MONTH(FROM_UNIXTIME(UNIX_TIMESTAMP(observed_on, 'yyyy-MM-dd'))) AS month,
-temperature_2m
+  id,
+  latitude,
+  longitude,
+  YEAR(FROM_UNIXTIME(UNIX_TIMESTAMP(observed_on, 'yyyy-MM-dd'))) AS year,
+  MONTH(FROM_UNIXTIME(UNIX_TIMESTAMP(observed_on, 'yyyy-MM-dd'))) AS month,
+  temperature_2m
 FROM fab_four_master_table
 WHERE scientific_name = 'Odocoileus hemionus'
   AND latitude IS NOT NULL
@@ -121,18 +119,18 @@ This step converts point-level observations into spatial grid cells to enable de
 ```sql
 CREATE OR REPLACE VIEW odocoileus_density_grid AS
 SELECT
-	ROUND(latitude * 2) / 2  AS lat_cell,
-	ROUND(longitude * 2) / 2 AS lon_cell,
-	year,
-	month,
-	COUNT(*) AS observation_count,
-	AVG(temperature_2m) 	AS avg_temperature
+  ROUND(latitude * 2) / 2  AS lat_cell,
+  ROUND(longitude * 2) / 2 AS lon_cell,
+  year,
+  month,
+  COUNT(*) AS observation_count,
+  AVG(temperature_2m) AS avg_temperature
 FROM odocoileus_base
 GROUP BY
-	ROUND(latitude * 2) / 2,
-	ROUND(longitude * 2) / 2,
-	year,
-	month;
+  ROUND(latitude * 2) / 2,
+  ROUND(longitude * 2) / 2,
+  year,
+  month;
 ```
 ### Check the format of odocoileus_density_grid
 
@@ -152,26 +150,26 @@ This step improves interpretability for visualization tools by adding human-read
 ```sql
 CREATE OR REPLACE VIEW odocoileus_density_grid_named AS
 SELECT
-	lat_cell,
-	lon_cell,
-	year,
-	month,
-	CASE month
-    	WHEN 1  THEN 'January'
-    	WHEN 2  THEN 'February'
-    	WHEN 3  THEN 'March'
-    	WHEN 4  THEN 'April'
-    	WHEN 5  THEN 'May'
-    	WHEN 6  THEN 'June'
-    	WHEN 7  THEN 'July'
-    	WHEN 8  THEN 'August'
-    	WHEN 9  THEN 'September'
-    	WHEN 10 THEN 'October'
-    	WHEN 11 THEN 'November'
-    	WHEN 12 THEN 'December'
-	END AS month_name,
-	observation_count,
-	avg_temperature
+  lat_cell,
+  lon_cell,
+  year,
+  month,
+  CASE
+	WHEN month = 1  THEN 'January'
+	WHEN month = 2  THEN 'February'
+	WHEN month = 3  THEN 'March'
+	WHEN month = 4  THEN 'April'
+	WHEN month = 5  THEN 'May'
+	WHEN month = 6  THEN 'June'
+	WHEN month = 7  THEN 'July'
+	WHEN month = 8  THEN 'August'
+	WHEN month = 9  THEN 'September'
+	WHEN month = 10 THEN 'October'
+	WHEN month = 11 THEN 'November'
+	WHEN month = 12 THEN 'December'
+  END AS month_name,
+  observation_count,
+  avg_temperature
 FROM odocoileus_density_grid;
 ```
 
@@ -192,19 +190,20 @@ INSERT OVERWRITE DIRECTORY '/user/rmehra/odocoileus_density_map'
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 SELECT
-	lat_cell,
-	lon_cell,
-	year,
-	month,
-	month_name,
-	observation_count,
-	avg_temperature
+  lat_cell,
+  lon_cell,
+  year,
+  month,
+  month_name,
+  observation_count,
+  avg_temperature
 FROM odocoileus_density_grid_named;
 ```
 ### Step 2 : copy the query files to into my linux home directory, rmehra : 
 
 ```
-hdfs dfs -get /user/rmehra/odocoileus_density_map~/odocoileus_density_map
+hdfs dfs -get /user/rmehra/odocoileus_density_map ~/odocoileus_density_map
+
 ```
 ---
 
