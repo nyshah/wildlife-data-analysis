@@ -21,7 +21,7 @@ USE nshah37;
 
 ---
 
-### 0.2 Identify Species with the Highest Number of Observations
+## 0.2 Identify Species with the Highest Number of Observations
 
 This query ranks species by total observation count to ensure sufficient data density for spatial aggregation.
 
