@@ -139,6 +139,7 @@ FROM odocoileus_density_grid
 LIMIT 10;
 ```
 ![Top species by observation count](images/base 2.png)
+
 ---
 
 ### Step 1.3 : Add Readable Month Labels
