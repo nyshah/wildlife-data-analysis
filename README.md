@@ -59,7 +59,7 @@ All subsequent views and exported datasets are derived directly from this master
 
 ## Research Questions
 
-- Does temperature influence where species are observed differently across regions?
-- Does the rarity of species observations vary systematically across space and time?
-- Do observation hotspots persist, disappear, or shift over time?
-- Are species observed at different times of day?
+- Radhika : Does temperature influence where species are observed differently across regions?
+- Roberto : Does the rarity of species observations vary systematically across space and time?
+- Niyati : Do observation hotspots persist, disappear, or shift over time?
+- Fatima : Are species observed at different times of day?
