@@ -155,6 +155,27 @@ LIMIT 10;
 ```
 ---
 
+### Step 1.4 : Export Aggregated Dataset to HDFS
+
+```sql
+INSERT OVERWRITE DIRECTORY '/user/rmehra/odocoileus_density_map'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+SELECT
+	lat_cell,
+	lon_cell,
+	year,
+	month,
+	month_name,
+	observation_count,
+	avg_temperature
+FROM odocoileus_density_grid_named;
+```
+### Step 1.5 : copy the query files to into my linux home directory, rmehra : 
+
+```
+hdfs dfs -get /user/rmehra/odocoileus_density_map~/odocoileus_density_map
+```
 
 
 
