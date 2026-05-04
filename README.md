@@ -94,7 +94,7 @@ Radhika : Does average monthly temperature influence where species are observed 
 
 - Niyati : Do observation hotspots persist, disappear, or shift over time?
 
- ![Visualization]()
+ ![Visualization](images/Niyati.png)
   
 - Fatima : Are species observed at different times of day?
 
