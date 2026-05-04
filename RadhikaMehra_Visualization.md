@@ -198,5 +198,8 @@ ls -lh ~/odocoileus_density_map.csv
 scp rmehra@132.226.148.236:/home/rmehra/odocoileus_density_map.csv .
 ```
 
+## Step 6 : Tableau Visualization in a Symbol Map
+
+
 
 
