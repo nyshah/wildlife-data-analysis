@@ -55,6 +55,13 @@
 
 👉 Fatima : Are species observed at different times of day?
 
+## 🔹 Topic Relevance
+
+➡️ Understanding wildlife movement and behavior 
+➡️ Identifies critical habitats and wildlife hotspots 
+➡️ Detect patterns in animal activity by time and location 
+➡️ Understand different environmental vs. observation bias
+
 ## 🔹 Methods and FlowChart of Analysis
 
 ![Project Flowchart](images/Flow2.png)
