@@ -54,7 +54,7 @@ This project is based on a subset of the **iNaturalist open observations dataset
 
 ## Methods and FlowChart of Analysis
 
-![Project Flowchart](images/Flow.png)
+![Project Flowchart](images/Flow2.png)
 
 ### Final Master Table (`fab_four_master_table`)
 
