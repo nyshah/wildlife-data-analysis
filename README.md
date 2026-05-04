@@ -21,7 +21,7 @@ This project is based on a subset of the **iNaturalist open observations dataset
   - Amphibians
   - Insects and other invertebrates
 - Species are organized hierarchically across standard taxonomic levels:
-  - Kingdom → Phylum → Class → Order → **Family** → Genus → Species
+  - Kingdom → Phylum → Class → Order → Family → Genus → Species
 
 
 ### Original Datasets
@@ -81,3 +81,11 @@ All subsequent views and exported datasets are derived directly from this master
 - Roberto : Does the rarity of species observations vary systematically across space and time?
 - Niyati : Do observation hotspots persist, disappear, or shift over time?
 - Fatima : Are species observed at different times of day?
+
+## Methods and FlowChart of Analysis
+
+
+
+## Visualization
+
+
