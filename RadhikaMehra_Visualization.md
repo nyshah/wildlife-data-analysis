@@ -50,7 +50,7 @@ FROM fab_four_master_table
 WHERE scientific_name RLIKE '[A-Za-z]'
 GROUP BY scientific_name
 ORDER BY num_years DESC
-LIMIT 20;
+LIMIT 30;
 ```
 ![Top species by observation count](images/NumYears.png)
 ---
