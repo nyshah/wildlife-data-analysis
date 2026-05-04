@@ -100,14 +100,16 @@ All subsequent views and exported datasets are derived directly from this master
 
 Radhika : Does average monthly temperature influence where species are observed differently across regions?
 
+## Spatial Redistribution Symbol Map
 ![Visualization](images/June2022.png)
 
 - Niyati : Do observation hotspots persist, disappear, or shift over time?
+## Heat Map
 
  ![Visualization](images/Niyati.png)
   
 - Fatima : Are species observed at different times of day?
-
+## Bar Chart
 ![Visualization](images/Fatima.png)
 
 
