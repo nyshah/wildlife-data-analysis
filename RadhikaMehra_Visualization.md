@@ -12,7 +12,7 @@ volume and temporal coverage using pre-existing Hive tables.
 
 ---
 
-## 0.1 Set the Active Hive Database
+### 0.1 Set the Active Hive Database
 
 All analysis was performed using tables from the shared `nshah37` database.
 
@@ -54,4 +54,31 @@ LIMIT 20;
 ### 0.4 Species Selection
 
 Species appearing in both the high observation-count and high temporal-coverage rankings were considered suitable for analysis. Mule deer (Odocoileus hemionus) satisfies both criteria and was selected for downstream processing.
+
+---
+
+## Step 1 : Visualization Code
+
+### Step 1.1: Create a Clean Base View for Analysis - odocoileus_base
+
+```sql
+CREATE OR REPLACE VIEW odocoileus_base AS
+SELECT
+id,
+latitude,
+longitude,
+YEAR(FROM_UNIXTIME(UNIX_TIMESTAMP(observed_on, 'yyyy-MM-dd'))) AS year,
+MONTH(FROM_UNIXTIME(UNIX_TIMESTAMP(observed_on, 'yyyy-MM-dd'))) AS month,
+temperature_2m
+FROM fab_four_master_table
+WHERE scientific_name = 'Odocoileus hemionus'
+  AND latitude IS NOT NULL
+  AND longitude IS NOT NULL
+  AND temperature_2m IS NOT NULL
+  AND YEAR(FROM_UNIXTIME(UNIX_TIMESTAMP(observed_on, 'yyyy-MM-dd'))) BETWEEN 2020 AND 2022;
+```
+---
+
+### Ste
+
 
