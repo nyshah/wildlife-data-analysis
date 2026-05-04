@@ -213,7 +213,23 @@ scp rmehra@132.226.148.236:/home/rmehra/odocoileus_density_map.csv .
   - **Average_Temp** — Number (Decimal)
 ``
 
-### Steps within Tableau to complete visualization : 
+### Tableau Visualization Construction
+
+- **Latitude** was dragged to the **Rows** shelf and **Longitude** to the **Columns** shelf to create the base map.
+
+- **MonthName** was placed on the **Pages** shelf to serve as a time slider for month‑by‑month temporal analysis.
+
+- **Year** was added as a **Filter** and configured as a **Single Value (Dropdown)** to allow flexible and fine‑grained year selection.
+
+- **AVG(Average_Temp)** was assigned to the **Marks → Color** shelf, with the color range manually adjusted (−27.90 to 41.50) to ensure the color gradient accurately represents temperature variation.
+
+- **SUM(Observation_Count)** was placed on the **Marks → Size** shelf so that marker size reflects monthly observation density.
+
+- The **visualization title** was customized to dynamically update based on the selected month and year, providing clear temporal context.
+
+- **Marks → Label** and **Marks → Detail** were used to display additional information when hovering over individual map points.
+
+- The visualization was converted into a **Dashboard**, with **floating legends** and layout adjustments applied to achieve a clean, professional presentation.
 
 
 
