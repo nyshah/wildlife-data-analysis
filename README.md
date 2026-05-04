@@ -1,15 +1,15 @@
 # Spatiotemporal Wildlife Activity Analysis
 
-## Objectives 
+## 🔹 Objectives 
 
-This project we analyzed a large scale spatiotemporal wildlife dataset using Hive to identify patterns in wildlife behavior across time and geographic locations.
+👉 This project we analyzed a large scale spatiotemporal wildlife dataset using Hive to identify patterns in wildlife behavior across time and geographic locations.
 
-## Dataset Overview and Preparation
+## 🔹 Dataset Overview and Preparation
 
 
 ## Dataset Overview (Kaggle / iNaturalist Source)
 
-This project is based on a subset of the **iNaturalist open observations dataset**, distributed via Kaggle. iNaturalist is a global citizen‑science platform where users contribute georeferenced observations of living organisms.
+👉 This project is based on a subset of the **iNaturalist open observations dataset**, distributed via Kaggle. iNaturalist is a global citizen‑science platform where users contribute georeferenced observations of living organisms.
 
 
  The full iNaturalist dataset contains **hundreds of millions of observations** collected worldwide.
@@ -24,7 +24,7 @@ This project is based on a subset of the **iNaturalist open observations dataset
   - Kingdom → Phylum → Class → Order → Family → Genus → Species
 
 
-### Original Datasets
+### 🔹 Original Datasets
 
 - **Observations dataset**
   - Contained individual species observation records.
@@ -45,20 +45,20 @@ This project is based on a subset of the **iNaturalist open observations dataset
 
 ---
 
-## Research Questions
+## 🔹 Research Questions
 
-- Radhika : Does average monthly temperature influence where species are observed differently across regions?
-- Roberto : Does the rarity of species observations vary systematically across space and time?
-- Niyati : Do observation hotspots persist, disappear, or shift over time?
-- Fatima : Are species observed at different times of day?
+👉 Radhika : Does average monthly temperature influence where species are observed differently across regions?
+👉 Roberto : Does the rarity of species observations vary systematically across space and time?
+👉 Niyati : Do observation hotspots persist, disappear, or shift over time?
+👉 Fatima : Are species observed at different times of day?
 
-## Methods and FlowChart of Analysis
+## 🔹 Methods and FlowChart of Analysis
 
 ![Project Flowchart](images/Flow2.png)
 
-### Final Master Table (`fab_four_master_table`)
+### 🔹 Final Master Table (`fab_four_master_table`)
 
-The master table represents the **cleaned, integrated dataset** used for all analysis and visualization.
+👉 The master table represents the **cleaned, integrated dataset** used for all analysis and visualization.
 
 **Columns retained in the master table:**
 
@@ -74,7 +74,7 @@ The master table represents the **cleaned, integrated dataset** used for all ana
 
 ---
 
-### Purpose of the Master Table
+### 🔹 Purpose of the Master Table
 
 - Provides a **single source of truth** for all analyses.
 - Eliminates the need for repeated joins between raw tables.
@@ -86,7 +86,7 @@ The master table represents the **cleaned, integrated dataset** used for all ana
 
 All subsequent views and exported datasets are derived directly from this master table
 
-## Methods and Types of Visualization 
+## 🔹 Methods and Types of Visualization 
 
 - **Tableau**
 - Heat Map
@@ -96,20 +96,20 @@ All subsequent views and exported datasets are derived directly from this master
 - Bar Chart
 
 
-## Visualization
+## 🔹 Visualization
 
 Radhika : Does average monthly temperature influence where species are observed differently across regions?
 
-## Spatial Redistribution Symbol Map
+## ✅ Spatial Redistribution Symbol Map
 ![Visualization](images/June2022.png)
 
 - Niyati : Do observation hotspots persist, disappear, or shift over time?
-## Heat Map
+## ✅ Heat Map
 
  ![Visualization](images/Niyati.png)
   
 - Fatima : Are species observed at different times of day?
-## Bar Chart
+## ✅ Bar Chart
 ![Visualization](images/Fatima.png)
 
 
