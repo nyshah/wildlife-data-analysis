@@ -35,6 +35,9 @@ GROUP BY scientific_name
 ORDER BY observation_count DESC
 LIMIT 10;
 ```
+Output 
+
+
 ---
 
 ### 0.3 Identify Species with the Greatest Temporal Coverage
