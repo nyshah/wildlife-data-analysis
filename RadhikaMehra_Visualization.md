@@ -1,7 +1,6 @@
 # Does Monthly Temperature alter the movement of the Mule Deer ? 
 
-This document describes the complete Hive-based workflow used to explore,
-prepare, and aggregate wildlife observation data for visualization.
+This document describes the complete Hive-based workflow used to explore,prepare, and aggregate wildlife observation data for visualization. The purpose of this visualization is to show the spatial redistribution of the Odocoileus hemionus ( Mule deer) species for the with average monthly temperature changes from 2020-2022 across the United States. The final deliverable is a Symbol Map in Tableau, animating time, temperature and density variables, which serves more as a visualization tool than a static visualization.
 
 ---
 
@@ -78,11 +77,15 @@ ORDER BY year;
 
 ![Top species by observation count](images/AvgTempYears.png)
 
+Here 2020-2022 emerges as the years with maximum observations for this species and hence, would be used.
+
 ---
 
 ## Step 1 : Visualization Code
 
 ### Step 1.1: Create a Clean Base View for Analysis - odocoileus_base
+
+This base creates a one row record for each observation of the species of Mule deer, extracting year and month for each observation and limiting outcomes to year for 2020-2022 for non-null values. 
 
 ```sql
 CREATE OR REPLACE VIEW odocoileus_base AS
@@ -113,7 +116,7 @@ LIMIT 10;
 
 ### Step 1.2 : Aggregate Observations into Spatial Density Grids
 
-This step converts point-level observations into spatial grid cells to enable density-based visualization.
+This step converts point-level observations into spatial grid cells to enable density-based visualization, along with aggregating count of observations and average temperature. This view builds on the odocoileus_base, and converts geography into spatial units so as to see easier patterns for density. 
 
 ```sql
 CREATE OR REPLACE VIEW odocoileus_density_grid AS
