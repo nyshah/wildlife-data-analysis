@@ -6,6 +6,24 @@ This project we analyzed a large scale spatiotemporal wildlife dataset using Hiv
 
 ## Dataset Overview and Preparation
 
+
+## Dataset Overview (Kaggle / iNaturalist Source)
+
+This project is based on a subset of the **iNaturalist open observations dataset**, distributed via Kaggle. iNaturalist is a global citizen‑science platform where users contribute georeferenced observations of living organisms.
+
+
+ The full iNaturalist dataset contains **hundreds of millions of observations** collected worldwide.
+- Observations span **hundreds of thousands of species**, covering:
+  - Plants
+  - Mammals
+  - Birds
+  - Reptiles
+  - Amphibians
+  - Insects and other invertebrates
+- Species are organized hierarchically across standard taxonomic levels:
+  - Kingdom → Phylum → Class → Order → **Family** → Genus → Species
+
+
 ### Original Datasets
 
 - **Observations dataset**
