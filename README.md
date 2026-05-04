@@ -86,6 +86,16 @@ The master table represents the **cleaned, integrated dataset** used for all ana
 
 All subsequent views and exported datasets are derived directly from this master table
 
+## Methods and Types of Visualization 
+
+- **Tableau**
+- Heat Map
+- Spatial Redistribution Symbol Map
+
+- **Excel**
+- Bar Chart
+
+
 ## Visualization
 
 Radhika : Does average monthly temperature influence where species are observed differently across regions?
