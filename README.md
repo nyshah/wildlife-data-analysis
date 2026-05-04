@@ -48,8 +48,11 @@
 ## 🔹 Research Questions
 
 👉 Radhika : Does average monthly temperature influence where species are observed differently across regions?
+
 👉 Roberto : Does the rarity of species observations vary systematically across space and time?
+
 👉 Niyati : Do observation hotspots persist, disappear, or shift over time?
+
 👉 Fatima : Are species observed at different times of day?
 
 ## 🔹 Methods and FlowChart of Analysis
